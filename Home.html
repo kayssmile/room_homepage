@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html lang="de-CH">
+
+    <head>
+
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+             <title>Room Homepage Master</title>
+              
+            <link rel="Stylesheet" type="text/css" href="./stylesheet.css">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap" rel="stylesheet">     
+            
+    </head>
+
+    <body>
+  
+        <div class="wrapper"> 
+
+            <div class="item-top">
+
+                <div class="item-top__nav">
+
+                    <button class="item-top__menu" aria-label="Main Menu">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                          <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                          <path class="line line2" d="M 20,50 H 80" />
+                          <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                        </svg>
+                    </button>
+
+                    <p class="item-top__nav-textsized">room</p>
+                    <p class="item-top__nav-text">home</p>
+                    <p class="item-top__nav-text">shop</p>
+                    <p class="item-top__nav-text">about</p>
+                    <p class="item-top__nav-text">contact</p>
+
+                </div>
+
+                <div  id = "1" class="item-top__img item-top__img1"></div>
+            
+                <div class="item-top__slider">
+                    <svg width="14" height="24" xmlns="http://www.w3.org/2000/svg" class="item-top__svg--left">
+                        <path d="M13 0L1 12l12 12" stroke="grey" fill="none" fill-rule="evenodd"/>
+                    </svg>
+                </div>
+
+                <div class="item-top__slider">
+                    <svg width="14" height="24" xmlns="http://www.w3.org/2000/svg" class="item-top__svg--right">
+                        <path d="M1 0l12 12L1 24" stroke="grey" fill="none" fill-rule="evenodd"/>
+                    </svg>
+                </div>
+
+                <div class="item-top__description">
+
+                    <h1 class="item-top__description--title">We are available all across the Globe</h1>
+
+                    <p class="item-top__description--text">
+                        With stores all over the world, it's easy for you to find furniture for your home or place of business.
+                        Locally, we’re in most major cities throughout the country. Find the branch nearest you using our store locator.
+                        Any questions? Don't hesitate to contact us today.</p>
+
+                    <div class="item-top__description--link">
+
+                        <p class="item-top__description--textinline">SHOP NOW</p>
+
+                        <svg width="40" height="12" xmlns="http://www.w3.org/2000/svg" class="item-top__description--svg">
+                            <path d="M34.05 0l5.481 5.527h.008v.008L40 6l-.461.465v.063l-.062-.001L34.049 12l-.662-.668 4.765-4.805H0v-1h38.206l-4.82-4.86L34.05 0z" 
+                            fill-rule="nonzero"/>
+                        </svg>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+            <div class="item_bottom">
+
+                <img src="./images/image-about-dark.jpg" class="item_bottom__picture1">
+
+                <div class="item_bottom__description">
+
+                    <h3 class="item_bottom__description--title">ABOUT OUR FURNITURE</h3>
+
+                    <p class="item_bottom__description--text">
+                        Our multifunctional collection blends design and function to suit your individual taste. 
+                        Make each room unique, or pick a cohesive theme that best express your interests and what inspires you.
+                        Find the furniture pieces you need, from traditional to contemporary styles or anything in between.
+                        Product specialists are available to help you create your dream space.
+                    </p>
+
+                </div>
+
+                <img src="./images/image-about-light.jpg" class="item_bottom__picture2">
+
+
+
+            </div>
+         
+        </div>
+       
+    </body>
+
+
+
+</html>
+
+<script>
+
+
+var hamburger = document.querySelector(".item-top__menu");
+var nav = document.querySelector(".item-top__nav");
+
+
+
+hamburger.addEventListener("click", change);
+
+
+function change (){
+
+    var element = document.querySelectorAll(".item-top__nav-text");
+    var element_sized = document.querySelector(".item-top__nav-textsized");
+
+    this.classList.toggle('opened');
+    this.setAttribute('aria-expanded', this.classList.contains('opened'));
+
+
+    nav.classList.toggle("item-top__nav--activ");
+
+    for(item of element){
+
+        item.classList.toggle("item-top__nav--enable");
+
+    }
+    
+    element_sized.classList.toggle("item-top__nav--enable");
+
+}
+
+/** Picture Slider **/
+
+var sliders = document.querySelectorAll(".item-top__slider");
+var img_actual = document.querySelector(".item-top__img");
+var id_picture = parseInt(img_actual.id); 
+
+for (var slider of sliders){
+
+    slider.addEventListener("click", change_img);
+
+}
+
+
+function change_img(){
+
+    var class_new = "";
+
+    if (this.firstElementChild.classList == "item-top__svg--right"){
+
+        
+        img_actual.classList.remove(img_actual.classList[1]);
+
+        if(id_picture == 3){
+
+            id_picture = 0;
+        }
+        id_picture ++;
+        
+        class_new = "item-top__img"+id_picture;
+
+        img_actual.classList.add(class_new);
+
+
+    }else if (this.firstElementChild.classList == "item-top__svg--left"){
+
+        img_actual.classList.remove(img_actual.classList[1]);
+
+        if(id_picture == 1){
+
+            id_picture = 4;
+        }
+        id_picture --;
+
+        class_new = "item-top__img"+id_picture;
+
+        img_actual.classList.add(class_new);
+        
+    }
+    
+}
+
+</script>
